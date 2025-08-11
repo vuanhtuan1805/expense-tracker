@@ -5,6 +5,10 @@ on:
     branches:
       - main
       - develop
+
+permissions:
+  contents: read
+  packages: write
       
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository }}/expense-tracker-api
