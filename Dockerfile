@@ -8,6 +8,7 @@ COPY ExpenseTracker.Api/ExpenseTracker.Api.csproj ExpenseTracker.Api/
 COPY ExpenseTracker.Application/ExpenseTracker.Application.csproj ExpenseTracker.Application/
 COPY ExpenseTracker.Domain/ExpenseTracker.Domain.csproj ExpenseTracker.Domain/
 COPY ExpenseTracker.Infrastructure/ExpenseTracker.Infrastructure.csproj ExpenseTracker.Infrastructure/
+COPY ExpenseTracker.Infrastructure/ExpenseTracker.Infrastructure.csproj ExpenseTracker.Tests/
 
 RUN dotnet restore ExpenseTracker.sln
 
