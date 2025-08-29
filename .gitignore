@@ -93,3 +93,4 @@ coverage*.json
 publish/
 dist/
 out/
+.fake

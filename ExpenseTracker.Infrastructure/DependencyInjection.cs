@@ -1,3 +1,6 @@
+using ExpenseTracker.Application.Services;
+using ExpenseTracker.Infrastructure.Persistence.Context;
+using ExpenseTracker.Infrastructure.ServiceImpl;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,9 +13,11 @@ public static class DependencyInjection
     {
         services.AddDbContext<ExpenseTrackerDbContext>(options =>
             options.UseMySql(
-                configuration.GetConnectionString("DefaultConnection"),
-                ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))
+                configuration.GetConnectionString("ExpenseTrackerDb"),
+                ServerVersion.AutoDetect(configuration.GetConnectionString("ExpenseTrackerDb"))
             ));
+
+        services.AddScoped<IAccountService, AccountService>();
 
         return services;
     }

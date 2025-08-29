@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ExpenseTracker.Infrastructure;
+using ExpenseTracker.Infrastructure.Persistence.Context;
+using ExpenseTracker.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ExpenseTrackerDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("ExpenseTrackerDb"), 
     new MySqlServerVersion(new Version(8, 0, 42))));
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
@@ -28,5 +31,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapControllers();
 
 app.Run();

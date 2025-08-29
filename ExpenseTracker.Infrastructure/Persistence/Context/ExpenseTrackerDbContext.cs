@@ -1,10 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using ExpenseTracker.Domain.Entities;
 
-public class ExpenseTrackerDbContext : DbContext
+namespace ExpenseTracker.Infrastructure.Persistence.Context
 {
-    public ExpenseTrackerDbContext(DbContextOptions<ExpenseTrackerDbContext> options)
-        : base(options)
+    public class ExpenseTrackerDbContext : DbContext
     {
+        public ExpenseTrackerDbContext(DbContextOptions<ExpenseTrackerDbContext> options)
+            : base(options)
+        {
+        }
+        public DbSet<Account> Accounts { get; set; }
     }
-    public DbSet<Account> Users { get; set; }
 }
